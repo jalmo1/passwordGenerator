@@ -19,6 +19,7 @@
   - variables and constants 
 
 #### Deployed webpage link:
+https://jalmo1.github.io/passwordGenerator/
 
 #### Webpage screenshot:
-![portfolio-screenshot](https://user-images.githubusercontent.com/81341368/117581675-2249a200-b0cc-11eb-8482-da18f700e42d.PNG)
+![password-generator-screenshot](https://user-images.githubusercontent.com/81341368/118416762-3a4a9400-b67f-11eb-8348-bb225a8ae310.png)
