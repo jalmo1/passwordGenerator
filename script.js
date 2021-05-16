@@ -91,7 +91,7 @@ if (confirmUppercase === true || confirmLowercase === true) {
 //checks how long the user wants their password to be
 var confirmLength = prompt("How long would you like your password to be?");
 // verifies password has to be between 8-128
-if (confirmLength <= 8 || confirmLength >= 129) {
+if (confirmLength <= 8 || confirmLength >= 128) {
   alert("Your password has to be between 8-128 characters");
   var confirmLength = prompt("How long would you like your password to be?");
 } else {
