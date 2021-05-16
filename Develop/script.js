@@ -1,8 +1,7 @@
 // Assignment code here
-
-// Get references to the #generate element
 var generateBtn = document.querySelector("#generate");
 
+// arrays used in the random password
 const lowerChar = [
   "a",
   "b",
@@ -78,19 +77,21 @@ const symbolChar = [
 
 var linkGenerateButton = document.getElementById(generate);
 
+// initial confirm prompts to get the users input
 var confirmUppercase = window.confirm("Do you want Uppercase characters?");
 var confirmLowercase = window.confirm("Do you want Lowercase characters?");
 var confirmSymbols = window.confirm("Do you want symbols?");
 var confirmNumbers = window.confirm("Do you want numbers?");
-//var link = document.getElementById(generate)
 
+// checks to see if the user picked uppercase and lowercase
 if (confirmUppercase === true || confirmLowercase === true) {
 } else {
   alert("You need to have atleast Upper and Lower case characters");
 }
-
+//checks how long the user wants their password to be
 var confirmLength = prompt("How long would you like your password to be?");
-if (confirmLength <= 8 || confirmLength >= 128) {
+// verifies password has to be between 8-128
+if (confirmLength <= 8 || confirmLength >= 129) {
   alert("Your password has to be between 8-128 characters");
   var confirmLength = prompt("How long would you like your password to be?");
 } else {
@@ -99,8 +100,9 @@ if (confirmLength <= 8 || confirmLength >= 128) {
 }
 console.log(confirmLowercase, confirmLowercase, confirmNumbers, confirmSymbols);
 
-// Write password to the #password input
+// function that creates a random password using all the parameters
 function generatePassword() {
+  // checks to see if the left the parameters 'false' or empty
   if (
     confirmSymbols == false &&
     confirmLowercase == false &&
@@ -110,30 +112,29 @@ function generatePassword() {
     return;
 
   //Verifiying what options the user picked
-  //var passwordChar = [upperChar, lowerChar, numberChar, symbolChar];
-  var test = [];
-  while (test.length < confirmLength) {
-    if (test.length < confirmLength)
+  var displayRandomPassword = [];
+  while (displayRandomPassword.length < confirmLength) {
+    if (displayRandomPassword.length < confirmLength)
       if (confirmUppercase) {
-        test = test.concat(
+        displayRandomPassword = displayRandomPassword.concat(
           upperChar[Math.floor(Math.random() * (25 - 0 + 1) + 0)]
         );
       }
-    if (test.length < confirmLength)
+    if (displayRandomPassword.length < confirmLength)
       if (confirmLowercase) {
-        test = test.concat(
+        displayRandomPassword = displayRandomPassword.concat(
           lowerChar[Math.floor(Math.random() * (25 - 0 + 1) + 0)]
         );
       }
-    if (test.length < confirmLength)
+    if (displayRandomPassword.length < confirmLength)
       if (confirmNumbers) {
-        test = test.concat(
+        displayRandomPassword = displayRandomPassword.concat(
           numberChar[Math.floor(Math.random() * (9 - 0 + 1) + 0)]
         );
       }
-    if (test.length < confirmLength)
+    if (displayRandomPassword.length < confirmLength)
       if (confirmSymbols) {
-        test = test.concat(
+        displayRandomPassword = displayRandomPassword.concat(
           symbolChar[Math.floor(Math.random() * (12 - 0 + 1) + 0)]
         );
       }
@@ -141,12 +142,16 @@ function generatePassword() {
   var passwordRandom = "";
   for (var i = 0; i < confirmLength; i++) {
     passwordRandom =
-      passwordRandom + test[Math.floor(Math.random() * test.length)];
+      passwordRandom +
+      displayRandomPassword[
+        Math.floor(Math.random() * displayRandomPassword.length)
+      ];
   }
-  test = test.join("");
-  return test;
+  displayRandomPassword = displayRandomPassword.join("");
+  return displayRandomPassword;
 }
 
+//writes password to the generate password box
 function writePassword() {
   var password = generatePassword();
   var passwordText = document.querySelector("#password");
@@ -154,8 +159,8 @@ function writePassword() {
   passwordText.value = password;
 }
 
-//set functions to generate random characters
-
 // Add event listener to generate button
 generateBtn.addEventListener("click", writePassword);
+
+//calls the generatePassword function the display the password on screen
 generatePassword();
